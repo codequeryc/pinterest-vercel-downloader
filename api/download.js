@@ -1,17 +1,18 @@
+// api/download.js
 import https from "https";
 
 export default function handler(req, res) {
-  const { video } = req.query;
+  const { id } = req.query;
 
-  if (!video) {
-    return res.status(400).send("Missing video URL");
+  if (!id) {
+    return res.status(400).send("Missing video ID");
   }
 
   let videoUrl;
   try {
-    videoUrl = Buffer.from(video, 'base64').toString('utf-8');
+    videoUrl = Buffer.from(id, 'base64').toString('utf-8');
   } catch (err) {
-    return res.status(400).send("Invalid base64 video URL");
+    return res.status(400).send("Invalid base64 string");
   }
 
   const filename = `pinterest-${Date.now()}.mp4`;
