@@ -15,7 +15,7 @@ export default function handler(req, res) {
     return res.status(400).send("Invalid base64 string");
   }
 
-  const filename = `pindl-${Date.now()}.mp4`;
+  const filename = `pindl.blogspot.com-${Date.now()}.mp4`;
 
   res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
   res.setHeader("Content-Type", "video/mp4");
